@@ -1,0 +1,390 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --mg:#C0186A;--cyan:#00B5C8;
+  --ink:#111820;--ink2:#2e3f50;--ink3:#5a7080;
+  --navy:#0f1e2e;--off:#f7f5f2;--white:#fff;
+  --border:rgba(17,24,32,0.1);
+  --ff:'Playfair Display',Georgia,serif;
+  --fs:'DM Sans',system-ui,sans-serif;
+  --max:1000px;
+}
+.w{background:var(--white);color:var(--ink);font-family:var(--fs);font-size:15px;line-height:1.6;overflow:hidden}
+.inner{max-width:var(--max);margin:0 auto;padding:0 2rem}
+
+nav{background:#fff;border-bottom:1px solid var(--border);position:relative;z-index:10}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-links{display:flex;gap:1.75rem;align-items:center}
+.nav-links a{color:var(--ink2);font-size:13px;text-decoration:none;letter-spacing:0.02em}
+.nav-links a:hover{color:var(--mg)}
+.nav-cta{background:var(--mg);color:#fff;font-size:12px;font-weight:500;letter-spacing:0.06em;padding:8px 18px;border-radius:3px;text-decoration:none}
+
+.hero{background:#0d1219;position:relative;overflow:hidden;min-height:460px}
+#blob-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-inner{max-width:var(--max);margin:0 auto;padding:0 2rem;position:relative;z-index:2;display:flex;align-items:center;min-height:460px}
+.hero-content{padding:5rem 0;max-width:560px}
+.hero-eyebrow{font-size:11px;letter-spacing:0.14em;color:var(--cyan);font-weight:500;text-transform:uppercase;margin-bottom:1.25rem;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--cyan)}
+.hero h1{font-family:var(--ff);font-size:clamp(30px,3.8vw,50px);font-weight:400;color:#fff;line-height:1.1;letter-spacing:-0.01em;margin-bottom:1.25rem}
+.hero h1 em{font-style:italic;color:var(--mg)}
+.hero-sub{color:rgba(255,255,255,0.72);font-size:14px;font-weight:300;line-height:1.85;max-width:440px;margin-bottom:2rem}
+.hero-actions{display:flex;gap:1rem;align-items:center}
+.btn-primary{background:var(--mg);color:#fff;font-size:12px;font-weight:500;letter-spacing:0.07em;padding:10px 22px;border-radius:3px;text-decoration:none;display:inline-block}
+.btn-ghost{color:rgba(255,255,255,0.75);font-size:12px;letter-spacing:0.05em;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.4);padding-bottom:1px}
+
+.stats-band{background:#fff;border-bottom:1px solid var(--border)}
+.stats-band-inner{max-width:var(--max);margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--border)}
+.sbi{padding:1.75rem 1.75rem;border-right:1px solid var(--border);display:flex;align-items:baseline;gap:0.75rem}
+.sbi-n{font-family:var(--ff);font-size:40px;font-weight:400;color:var(--mg);line-height:1}
+.sbi-l{font-size:12px;color:var(--ink3);line-height:1.5;max-width:130px}
+
+.partners-band{background:var(--mg);padding:2.5rem 0}
+.partners-label{font-size:10px;letter-spacing:0.14em;color:#fff;text-transform:uppercase;font-weight:500;margin-bottom:1.5rem;display:flex;align-items:center;gap:8px}
+.partners-label::before{content:'';display:block;width:14px;height:1px;background:rgba(255,255,255,0.7)}
+.partners-logos{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.15)}
+.partner-tile{background:rgba(255,255,255,0.08);padding:1.5rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;transition:background 0.15s}
+.partner-tile:hover{background:rgba(255,255,255,0.18)}
+.partner-name{font-size:17px;font-weight:500;color:#fff;letter-spacing:0.01em;font-family:var(--fs)}
+.partner-badge{font-size:10px;letter-spacing:0.05em;color:#fff;text-transform:uppercase;text-align:center;opacity:0.9}
+
+.services-section{background:var(--navy);padding:4rem 0}
+.services-header{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:2.5rem;align-items:end}
+.services-header h2{font-family:var(--ff);font-size:28px;font-weight:400;color:#fff;line-height:1.2}
+.services-intro{font-size:13px;color:#9aaab8;line-height:1.8}
+.sl-light{font-size:11px;letter-spacing:0.14em;color:var(--cyan);font-weight:500;text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;gap:8px}
+.sl-light::before{content:'';display:block;width:14px;height:1px;background:var(--cyan)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.08)}
+.svc{background:var(--navy);padding:1.75rem 1.5rem;cursor:pointer;position:relative;transition:background 0.15s}
+.svc:hover{background:rgba(255,255,255,0.04)}
+.svc-accent{width:26px;height:2px;margin-bottom:1rem;border-radius:1px}
+.svc-accent.mg{background:var(--mg)}
+.svc-accent.cy{background:var(--cyan)}
+.svc-accent.wh{background:rgba(255,255,255,0.35)}
+.svc-title{font-family:var(--ff);font-size:16px;font-weight:400;color:#fff;margin-bottom:0.5rem;line-height:1.25}
+.svc-desc{font-size:12px;color:#9aaab8;line-height:1.65;margin-bottom:0.65rem}
+.svc-tag{font-size:11px;color:#e8a0bf;font-style:italic}
+.svc-arrow{position:absolute;bottom:1.5rem;right:1.5rem;color:rgba(255,255,255,0.15);font-size:16px;transition:color 0.15s}
+.svc:hover .svc-arrow{color:var(--mg)}
+
+.sl{font-size:11px;letter-spacing:0.14em;color:var(--mg);font-weight:500;text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;gap:8px}
+.sl::before{content:'';display:block;width:14px;height:1px;background:var(--mg)}
+
+.njt{padding:4.5rem 0;background:var(--off);position:relative;overflow:hidden}
+.njt-geo{position:absolute;top:-40px;right:-40px;width:220px;height:220px;border:1px solid rgba(192,24,106,0.08);border-radius:4px;transform:rotate(12deg)}
+.njt-geo2{position:absolute;top:0;right:30px;width:130px;height:130px;border:1px solid rgba(0,181,200,0.08);border-radius:4px;transform:rotate(12deg)}
+.njt-inner{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:start;position:relative;z-index:1}
+.njt-left h2{font-family:var(--ff);font-size:32px;font-weight:400;color:var(--ink);line-height:1.15;margin-bottom:1rem}
+.njt-left h2 em{font-style:italic;color:var(--mg)}
+.njt-left p{font-size:13px;color:var(--ink3);line-height:1.8}
+.njt-callout{margin-top:1.75rem;background:var(--ink);padding:1.25rem;border-radius:3px;border-left:3px solid var(--mg)}
+.njt-callout p{font-family:var(--ff);font-size:15px;font-style:italic;color:rgba(255,255,255,0.9);line-height:1.5}
+.njt-callout cite{display:block;margin-top:0.6rem;font-size:11px;letter-spacing:0.06em;color:#8a9199;font-style:normal}
+.njt-rule{padding:1.5rem 0;border-top:1px solid var(--border);display:grid;grid-template-columns:24px 1fr;gap:0.875rem;align-items:start}
+.njt-rule:last-child{border-bottom:1px solid var(--border)}
+.rule-n{font-family:var(--ff);font-size:12px;color:var(--mg);padding-top:3px}
+.rule-title{font-family:var(--ff);font-size:17px;font-weight:400;color:var(--ink);margin-bottom:0.35rem;line-height:1.2}
+.rule-body{font-size:13px;color:var(--ink3);line-height:1.7}
+
+.work{background:var(--white);padding:4.5rem 0}
+.work-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem}
+.work-header h2{font-family:var(--ff);font-size:26px;font-weight:400;color:var(--ink);line-height:1.2}
+.see-all{font-size:12px;letter-spacing:0.06em;color:var(--ink3);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;white-space:nowrap}
+.see-all:hover{color:var(--mg);border-color:var(--mg)}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.case{background:var(--off);border:1px solid var(--border);padding:1.75rem 1.5rem;cursor:pointer;transition:border-color 0.15s;display:flex;flex-direction:column}
+.case:hover{border-color:var(--mg)}
+.case-type{font-size:10px;letter-spacing:0.12em;color:var(--mg);font-weight:500;text-transform:uppercase;margin-bottom:0.5rem;display:flex;align-items:center;gap:5px}
+.case-type::before{content:'';width:10px;height:1px;background:var(--mg)}
+.case-title{font-family:var(--ff);font-size:16px;font-weight:400;color:var(--ink);margin-bottom:0.6rem;line-height:1.25;flex:1}
+.case-sector{display:inline-flex;font-size:11px;color:var(--ink3);background:#fff;padding:3px 9px;border-radius:2px;margin-bottom:0.6rem;align-self:flex-start;border:1px solid var(--border)}
+.case-body{font-size:12px;color:var(--ink3);line-height:1.65}
+.case-link{font-size:12px;color:var(--ink3);text-decoration:none;display:flex;align-items:center;gap:4px;margin-top:1rem;border-top:1px solid var(--border);padding-top:1rem}
+.case-link:hover{color:var(--mg)}
+
+.contact{background:var(--ink);padding:4.5rem 0;position:relative;overflow:hidden}
+.cg1{position:absolute;top:-60px;right:-30px;width:260px;height:260px;border:1px solid rgba(192,24,106,0.12);border-radius:4px;transform:rotate(10deg)}
+.cg2{position:absolute;top:-10px;right:60px;width:150px;height:150px;border:1px solid rgba(0,181,200,0.08);border-radius:4px;transform:rotate(10deg)}
+.contact-inner{display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:start;position:relative;z-index:1}
+.contact-left h2{font-family:var(--ff);font-size:28px;font-weight:400;color:#fff;line-height:1.2;margin-bottom:1rem}
+.contact-left h2 em{font-style:italic;color:#e8799f}
+.contact-sub{color:#9aaab8;font-size:13px;line-height:1.8;max-width:300px}
+.cl-sl{font-size:11px;letter-spacing:0.14em;color:var(--cyan);font-weight:500;text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;gap:8px}
+.cl-sl::before{content:'';display:block;width:14px;height:1px;background:var(--cyan)}
+.form{display:flex;flex-direction:column;gap:0.875rem}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:0.875rem}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:10px;letter-spacing:0.1em;color:#8a9199;text-transform:uppercase}
+.field input,.field textarea{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:#fff;font-family:var(--fs);font-size:13px;padding:9px 12px;border-radius:3px;outline:none;width:100%;transition:border-color 0.2s}
+.field input::placeholder,.field textarea::placeholder{color:#8a9199}
+.field input:focus,.field textarea:focus{border-color:rgba(232,121,159,0.7);outline:2px solid rgba(232,121,159,0.3);outline-offset:1px}
+.field textarea{height:80px;resize:none;line-height:1.6}
+.form-submit{background:var(--mg);color:#fff;font-family:var(--fs);font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:11px 24px;border:none;border-radius:3px;cursor:pointer;align-self:flex-start;margin-top:0.25rem}
+
+footer{background:#080d13;border-top:1px solid rgba(255,255,255,0.05)}
+.foot-inner{max-width:var(--max);margin:0 auto;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.foot-links{display:flex;gap:1.5rem}
+.foot-links a{font-size:12px;color:rgba(255,255,255,0.55);text-decoration:none}
+.foot-links a:hover{color:#fff}
+a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:2px}
+</style>
+
+<div class="w">
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" aria-label="Tekleigh home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="140" height="24" viewBox="0 0 534.63 90.51" role="img" aria-label="Tekleigh"><defs><style>.lc1{fill:#ffc700}.lc2{fill:#ff00af}.lc3{fill:#fba302}.lc4{fill:#ff8300}.lc5{fill:#c30072}.lc6{fill:#d70095}</style></defs><path d="M128.19,35.65h-19.58v-10.53h51.26v10.53h-19.49v54.12h-12.19V35.65Z"/><path d="M166.98,25.12h43.04v10.53h-30.85v15.7h24.75v10.53h-24.75v17.27h31.86v10.62h-44.06V25.12Z"/><path d="M238.38,59.85l-9.05,9.79v20.13h-12.28V25.12h12.28v28.17l25.95-28.17h15.24l-23.74,25.68,26.14,38.98h-15.15l-19.4-29.92Z"/><path d="M278.65,25.12h7.85v57.54h32.33v7.11h-40.18V25.12Z"/><path d="M325.94,25.12h40.45v7.11h-32.6v20.6h26.51v7.11h-26.51v22.72h33.62v7.11h-41.47V25.12Z"/><path d="M374.61,25.12h7.85V89.77h-7.85V25.12Z"/><path d="M389.21,57.45c0-22.07,15.15-33.07,31.22-33.07,14.78,0,26.32,8.77,27.8,21.15h-8.31c-1.48-8.22-9.61-14.04-19.58-14.04-13.3,0-23.09,9.14-23.09,25.95s9.79,26.14,23.09,26.14c10.62,0,20.04-6,20.04-15.33,0-2.96-1.94-4.89-5.08-4.89h-14.59v-6.83h15.98c4.71,0,11.45,3.69,11.45,11.08v22.17h-7.3v-11.27c-3.05,7.11-11.08,12.01-20.6,12.01-15.98,0-31.03-10.99-31.03-33.07Z"/><path d="M505.31,25.12V89.77h-7.85v-29.83h-34.27v29.83h-7.85V25.12h7.85v27.71h34.27V25.12h7.85Z"/><path class="lc4" d="M50.24,25.13h10.58c5.93,0,10.75,4.82,10.75,10.75v10.58h-21.33V25.13h0Z"/><path class="lc3" d="M50.24,50.27h21.33v21.33h-10.64c-5.9,0-10.69-4.79-10.69-10.69v-10.64h0Z"/><path class="lc1" d="M75.44,50.27h10.74c5.84,0,10.59,4.74,10.59,10.59h0c0,5.93-4.81,10.74-10.74,10.74h-10.59v-21.33h0Z"/><path class="lc5" d="M25.13,25.13h21.33v21.33h-10.59c-5.93,0-10.74-4.81-10.74-10.74v-10.59h0Z"/><path class="lc6" d="M25.13,0h10.45C41.59,0,46.47,4.87,46.47,10.88v10.45H25.13V0h0Z"/><path class="lc2" d="M10.7,0h10.63V21.33H10.63C4.76,21.33,0,16.57,0,10.7H0C0,4.8,4.8,0,10.7,0Z"/></svg>
+    </a>
+    <div class="nav-links" role="navigation" aria-label="Main navigation">
+      <a href="#">Services</a>
+      <a href="#">AI Solutions</a>
+      <a href="#">About</a>
+      <a href="#">Insights</a>
+      <a href="#">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Contact Us</a>
+  </div>
+</nav>
+
+<main>
+<section aria-label="Hero">
+  <div class="hero">
+    <canvas id="blob-canvas" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Technology Advisory &amp; Implementation</p>
+        <h1>A technology partner<br>for the decisions<br>that <em>matter.</em></h1>
+        <p class="hero-sub">TEKLEIGH works with organizations across the full lifecycle of major technology programs — from advisory and strategy through implementation and ongoing managed services.</p>
+        <div class="hero-actions">
+          <a href="#services" class="btn-primary">What We Do</a>
+          <a href="#work" class="btn-ghost">See Our Work →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-band" aria-label="Key statistics">
+    <div class="stats-band-inner">
+      <div class="sbi">
+        <div class="sbi-n" aria-label="31 industries">31</div>
+        <div class="sbi-l">Industries served across every major sector</div>
+      </div>
+      <div class="sbi">
+        <div class="sbi-n" aria-label="800 plus engagements">800<span style="font-size:22px;color:var(--ink3)" aria-hidden="true">+</span></div>
+        <div class="sbi-l">Completed engagements, built over decades</div>
+      </div>
+      <div class="sbi">
+        <div class="sbi-n" aria-label="92 percent repeat clients">92<span style="font-size:22px;color:var(--ink3)" aria-hidden="true">%</span></div>
+        <div class="sbi-l">Repeat client rate — the only metric that matters</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Technology partners">
+  <div class="partners-band">
+    <div class="inner">
+      <p class="partners-label">Technology Partners</p>
+      <div class="partners-logos" role="list">
+        <div class="partner-tile" role="listitem">
+          <svg width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false"><circle cx="24" cy="24" r="20" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/><path d="M13 21 L17 30 L21 22 L25 30 L29 21 L33 21" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="partner-name">Workday</div>
+          <div class="partner-badge">Certified Partner</div>
+        </div>
+        <div class="partner-tile" role="listitem">
+          <svg width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false"><ellipse cx="24" cy="24" rx="17" ry="11" stroke="white" stroke-width="2" fill="rgba(255,255,255,0.08)"/><ellipse cx="24" cy="24" rx="9" ry="5.5" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none"/></svg>
+          <div class="partner-name">Oracle</div>
+          <div class="partner-badge">Implementation Partner</div>
+        </div>
+        <div class="partner-tile" role="listitem">
+          <svg width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false"><rect x="7" y="15" width="34" height="18" rx="3" stroke="white" stroke-width="1.5" fill="rgba(255,255,255,0.08)"/><text x="24" y="28" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="white">SAP</text></svg>
+          <div class="partner-name">SAP</div>
+          <div class="partner-badge">Integration Partner</div>
+        </div>
+        <div class="partner-tile" role="listitem">
+          <svg width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false"><rect x="10" y="10" width="12" height="12" fill="rgba(255,255,255,0.9)"/><rect x="26" y="10" width="12" height="12" fill="rgba(255,255,255,0.55)"/><rect x="10" y="26" width="12" height="12" fill="rgba(255,255,255,0.55)"/><rect x="26" y="26" width="12" height="12" fill="rgba(255,255,255,0.9)"/></svg>
+          <div class="partner-name">Microsoft</div>
+          <div class="partner-badge">Dynamics Partner</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" aria-label="Services">
+  <div class="services-section">
+    <div class="inner">
+      <div class="services-header">
+        <div>
+          <p class="sl-light">What We Do</p>
+          <h2>Full-lifecycle capability, strategy to sustained operation.</h2>
+        </div>
+        <p class="services-intro">We work across advisory, assessment, implementation, and managed services — because the decisions we help you make only succeed if the execution holds.</p>
+      </div>
+      <div class="svc-grid" role="list">
+        <article class="svc" role="listitem"><div class="svc-accent mg" aria-hidden="true"></div><h3 class="svc-title">Advisory Services</h3><p class="svc-desc">Technology strategy, CIO advisory, AI strategy, cloud strategy, M&A and PE advisory, cybersecurity, and rapid assessments.</p><p class="svc-tag">Core to who we are.</p><i class="svc-arrow ti ti-arrow-right" aria-hidden="true"></i></article>
+        <article class="svc" role="listitem"><div class="svc-accent cy" aria-hidden="true"></div><h3 class="svc-title">Strategic Assessment</h3><p class="svc-desc">System and platform selection, target operating model design, and current-state diagnostics that ground every program in reality.</p><p class="svc-tag">The work we love.</p><i class="svc-arrow ti ti-arrow-right" aria-hidden="true"></i></article>
+        <article class="svc" role="listitem"><div class="svc-accent wh" aria-hidden="true"></div><h3 class="svc-title">Technology Implementation</h3><p class="svc-desc">Cloud, data, AI, modernization, and enterprise platforms — Workday, Oracle, SAP, Microsoft Dynamics, and NetSuite.</p><p class="svc-tag">Right in our wheelhouse.</p><i class="svc-arrow ti ti-arrow-right" aria-hidden="true"></i></article>
+        <article class="svc" role="listitem"><div class="svc-accent mg" aria-hidden="true"></div><h3 class="svc-title">AI Solutions</h3><p class="svc-desc">TEKLEIGH extends Workday with agentic AI through Sana — automating workflows and sharpening decisions across HCM, Finance, and beyond. Through our WhiteFish partnership, we add an AI + Blockchain layer that delivers verifiable intelligence across your entire technology ecosystem.</p><p class="svc-tag">From hype to value.</p><i class="svc-arrow ti ti-arrow-right" aria-hidden="true"></i></article>
+        <article class="svc" role="listitem"><div class="svc-accent cy" aria-hidden="true"></div><h3 class="svc-title">Application Managed Services</h3><p class="svc-desc">Ongoing operation and optimization of the platforms our clients use to run their business. We lean in when most firms tap out.</p><p class="svc-tag">We lean in when others tap out.</p><i class="svc-arrow ti ti-arrow-right" aria-hidden="true"></i></article>
+        <article class="svc" role="listitem"><div class="svc-accent wh" aria-hidden="true"></div><h3 class="svc-title">Project Delivery Services</h3><p class="svc-desc">PMO framework development, advisory and implementation, change management and adoption that actually sticks.</p><p class="svc-tag">Clients call us back for this.</p><i class="svc-arrow ti ti-arrow-right" aria-hidden="true"></i></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="How we work">
+  <div class="njt">
+    <div class="njt-geo" aria-hidden="true"></div><div class="njt-geo2" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="njt-inner">
+        <div class="njt-left">
+          <p class="sl">How We Work</p>
+          <h2>Never<br>just <em>Tek.</em></h2>
+          <p>We nail down the operating model, the people, and the process before we configure and build. We measure adoption, not just deployment.</p>
+          <blockquote class="njt-callout">
+            <p>"The team you meet on the first call is the team that stays with you."</p>
+            <cite>— TEKLEIGH Principle</cite>
+          </blockquote>
+        </div>
+        <div>
+          <div class="njt-rule"><div class="rule-n" aria-hidden="true">01</div><div><h3 class="rule-title">Business first, technology second.</h3><p class="rule-body">We call our approach 'Never Just Tek.' We nail down the operating model, the people, and the process before we configure and build. We measure adoption, not just deployment.</p></div></div>
+          <div class="njt-rule"><div class="rule-n" aria-hidden="true">02</div><div><h3 class="rule-title">Technology and vendor agnostic.</h3><p class="rule-body">The long-term value of our work depends on getting the technology recommendation right. We're about finding the right tool to do the right job — deep expertise across a broad set of partners, no allegiance to any of them.</p></div></div>
+          <div class="njt-rule"><div class="rule-n" aria-hidden="true">03</div><div><h3 class="rule-title">What you see is what you get.</h3><p class="rule-body">The team you meet on the first call is the team that stays with you. We don't run a junior bench behind a senior pitcher. The people with the answers are the people doing the work.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" aria-label="Selected work">
+  <div class="work">
+    <div class="inner">
+      <div class="work-header">
+        <div>
+          <p class="sl">Selected Work</p>
+          <h2>A track record built engagement by engagement.</h2>
+        </div>
+        <a href="#" class="see-all">See all work →</a>
+      </div>
+      <div class="cases" role="list">
+        <article class="case" role="listitem"><p class="case-type">Managed Services</p><h3 class="case-title">Operational continuity across a distributed transportation fleet</h3><span class="case-sector">Transportation</span><p class="case-body">Long-term managed services ensuring platform stability and continuous optimization for a multi-region operator.</p><a href="https://tekleigh.com/success-stories/transportation-success-story-2/" class="case-link">Read the story →</a></article>
+        <article class="case" role="listitem"><p class="case-type">Strategic Assessment</p><h3 class="case-title">Target operating model for a global industrial firm</h3><span class="case-sector">Industrial</span><p class="case-body">Current-state diagnostics and operating model design enabling rationalization of a complex technology landscape.</p><a href="https://tekleigh.com/success-stories/industrial-success-story-2/" class="case-link">Read the story →</a></article>
+        <article class="case" role="listitem"><p class="case-type">Application Managed Services</p><h3 class="case-title">Platform optimization in a regulated pharma environment</h3><span class="case-sector">Pharmaceutical</span><p class="case-body">Ongoing managed services maintaining compliance, performance, and agility within a complex pharmaceutical organization.</p><a href="https://tekleigh.com/success-stories/pharmaceutical-success-story/" class="case-link">Read the story →</a></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" aria-label="Contact">
+  <div class="contact">
+    <div class="cg1" aria-hidden="true"></div><div class="cg2" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="contact-inner">
+        <div class="contact-left">
+          <p class="cl-sl">Get in Touch</p>
+          <h2>If you're a leader looking to make an <em>impact,</em> we'd love to hear from you.</h2>
+          <p class="contact-sub">Send us a message and we'll reach out to explore how Tekleigh can help you realize your goals.</p>
+        </div>
+        <form class="form" action="#" method="post" novalidate aria-label="Contact form">
+          <div class="row2">
+            <div class="field"><label for="fname">First Name</label><input type="text" id="fname" name="fname" placeholder="Jane" autocomplete="given-name"></div>
+            <div class="field"><label for="lname">Last Name</label><input type="text" id="lname" name="lname" placeholder="Smith" autocomplete="family-name"></div>
+          </div>
+          <div class="field"><label for="org">Organization</label><input type="text" id="org" name="org" placeholder="Acme Corporation" autocomplete="organization"></div>
+          <div class="field"><label for="jobtitle">Title</label><input type="text" id="jobtitle" name="jobtitle" placeholder="Chief Information Officer" autocomplete="organization-title"></div>
+          <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="jane@acme.com" autocomplete="email"></div>
+          <div class="field"><label for="msg">How can we help?</label><textarea id="msg" name="msg" placeholder="Tell us about your initiative or challenge..."></textarea></div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <a href="#" aria-label="Tekleigh home" style="display:flex;align-items:center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="110" height="19" viewBox="0 0 534.63 90.51" aria-hidden="true" focusable="false"><defs><style>.fc1{fill:#ffc700}.fc2{fill:#ff00af}.fc3{fill:#fba302}.fc4{fill:#ff8300}.fc5{fill:#c30072}.fc6{fill:#d70095}</style></defs><path fill="rgba(255,255,255,0.55)" d="M128.19,35.65h-19.58v-10.53h51.26v10.53h-19.49v54.12h-12.19V35.65Z"/><path fill="rgba(255,255,255,0.55)" d="M166.98,25.12h43.04v10.53h-30.85v15.7h24.75v10.53h-24.75v17.27h31.86v10.62h-44.06V25.12Z"/><path fill="rgba(255,255,255,0.55)" d="M238.38,59.85l-9.05,9.79v20.13h-12.28V25.12h12.28v28.17l25.95-28.17h15.24l-23.74,25.68,26.14,38.98h-15.15l-19.4-29.92Z"/><path fill="rgba(255,255,255,0.55)" d="M278.65,25.12h7.85v57.54h32.33v7.11h-40.18V25.12Z"/><path fill="rgba(255,255,255,0.55)" d="M325.94,25.12h40.45v7.11h-32.6v20.6h26.51v7.11h-26.51v22.72h33.62v7.11h-41.47V25.12Z"/><path fill="rgba(255,255,255,0.55)" d="M374.61,25.12h7.85V89.77h-7.85V25.12Z"/><path fill="rgba(255,255,255,0.55)" d="M389.21,57.45c0-22.07,15.15-33.07,31.22-33.07,14.78,0,26.32,8.77,27.8,21.15h-8.31c-1.48-8.22-9.61-14.04-19.58-14.04-13.3,0-23.09,9.14-23.09,25.95s9.79,26.14,23.09,26.14c10.62,0,20.04-6,20.04-15.33,0-2.96-1.94-4.89-5.08-4.89h-14.59v-6.83h15.98c4.71,0,11.45,3.69,11.45,11.08v22.17h-7.3v-11.27c-3.05,7.11-11.08,12.01-20.6,12.01-15.98,0-31.03-10.99-31.03-33.07Z"/><path fill="rgba(255,255,255,0.55)" d="M505.31,25.12V89.77h-7.85v-29.83h-34.27v29.83h-7.85V25.12h7.85v27.71h34.27V25.12h7.85Z"/><path class="fc4" d="M50.24,25.13h10.58c5.93,0,10.75,4.82,10.75,10.75v10.58h-21.33V25.13h0Z"/><path class="fc3" d="M50.24,50.27h21.33v21.33h-10.64c-5.9,0-10.69-4.79-10.69-10.69v-10.64h0Z"/><path class="fc1" d="M75.44,50.27h10.74c5.84,0,10.59,4.74,10.59,10.59h0c0,5.93-4.81,10.74-10.74,10.74h-10.59v-21.33h0Z"/><path class="fc5" d="M25.13,25.13h21.33v21.33h-10.59c-5.93,0-10.74-4.81-10.74-10.74v-10.59h0Z"/><path class="fc6" d="M25.13,0h10.45C41.59,0,46.47,4.87,46.47,10.88v10.45H25.13V0h0Z"/><path class="fc2" d="M10.7,0h10.63V21.33H10.63C4.76,21.33,0,16.57,0,10.7H0C0,4.8,4.8,0,10.7,0Z"/></svg>
+    </a>
+    <nav class="foot-links" aria-label="Footer navigation">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  const canvas = document.getElementById('blob-canvas');
+  const hero = canvas.parentElement;
+  function setup(){
+    const W=hero.offsetWidth,H=hero.offsetHeight,dpr=window.devicePixelRatio||1;
+    canvas.width=W*dpr; canvas.height=H*dpr;
+    return {ctx:canvas.getContext('2d'),W:W*dpr,H:H*dpr,dpr};
+  }
+  let {ctx,W,H,dpr}=setup();
+  const defs=[
+    {cx:0.78,cy:0.15,rx:0.32,ry:0.55,n:14,jx:0.07,jy:0.09,fill:'#C0186A',alpha:0.52},
+    {cx:0.88,cy:0.68,rx:0.24,ry:0.36,n:12,jx:0.06,jy:0.08,fill:'#8B0E4A',alpha:0.42},
+    {cx:0.60,cy:0.04,rx:0.20,ry:0.26,n:11,jx:0.06,jy:0.05,fill:'#00B5C8',alpha:0.14},
+    {cx:0.95,cy:0.42,rx:0.16,ry:0.30,n:10,jx:0.05,jy:0.06,fill:'#00B5C8',alpha:0.10},
+    {cx:0.70,cy:0.85,rx:0.26,ry:0.20,n:12,jx:0.07,jy:0.05,fill:'#7B1040',alpha:0.32},
+    {cx:0.52,cy:0.50,rx:0.18,ry:0.24,n:11,jx:0.05,jy:0.07,fill:'#C0186A',alpha:0.12},
+  ];
+  function mkPts(d){
+    const pts=[];
+    for(let i=0;i<d.n;i++){
+      const a=(i/d.n)*Math.PI*2+(Math.random()*0.5);
+      const rx=(d.rx+(Math.random()-.5)*d.jx*2)*W;
+      const ry=(d.ry+(Math.random()-.5)*d.jy*2)*H;
+      pts.push([d.cx*W+Math.cos(a)*rx,d.cy*H+Math.sin(a)*ry]);
+    }
+    return pts;
+  }
+  let pts=defs.map(d=>mkPts(d));
+  let vel=pts.map(bp=>bp.map(()=>[(Math.random()-.5)*.35*dpr,(Math.random()-.5)*.35*dpr]));
+  function drawBlob(bp,alpha,fill){
+    const n=bp.length;
+    ctx.beginPath();
+    ctx.moveTo((bp[0][0]+bp[n-1][0])/2,(bp[0][1]+bp[n-1][1])/2);
+    for(let i=0;i<n;i++){
+      const a=bp[i],b=bp[(i+1)%n];
+      ctx.quadraticCurveTo(a[0],a[1],(a[0]+b[0])/2,(a[1]+b[1])/2);
+    }
+    ctx.closePath();
+    ctx.globalAlpha=alpha; ctx.fillStyle=fill; ctx.fill(); ctx.globalAlpha=1;
+  }
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#0d1219'; ctx.fillRect(0,0,W,H);
+    pts.forEach((bp,si)=>{
+      bp.forEach((p,pi)=>{
+        p[0]+=vel[si][pi][0]; p[1]+=vel[si][pi][1];
+        if(Math.random()<.004){
+          vel[si][pi][0]+=(Math.random()-.5)*.15*dpr;
+          vel[si][pi][1]+=(Math.random()-.5)*.15*dpr;
+          vel[si][pi][0]*=.93; vel[si][pi][1]*=.93;
+        }
+      });
+      drawBlob(bp,defs[si].alpha,defs[si].fill);
+    });
+    const vL=ctx.createRadialGradient(W*.28,H*.5,0,W*.28,H*.5,W*.6);
+    vL.addColorStop(0,'rgba(13,18,25,0.88)'); vL.addColorStop(1,'rgba(13,18,25,0)');
+    ctx.fillStyle=vL; ctx.fillRect(0,0,W,H);
+    const vB=ctx.createLinearGradient(0,H*.55,0,H);
+    vB.addColorStop(0,'rgba(13,18,25,0)'); vB.addColorStop(1,'rgba(13,18,25,0.65)');
+    ctx.fillStyle=vB; ctx.fillRect(0,0,W,H);
+    const vT=ctx.createLinearGradient(0,0,0,H*.2);
+    vT.addColorStop(0,'rgba(13,18,25,0.55)'); vT.addColorStop(1,'rgba(13,18,25,0)');
+    ctx.fillStyle=vT; ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+</script>
