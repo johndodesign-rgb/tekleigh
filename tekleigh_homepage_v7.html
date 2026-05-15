@@ -128,23 +128,191 @@ footer{background:#080d13;border-top:1px solid rgba(255,255,255,0.05)}
 .foot-links a{font-size:12px;color:rgba(255,255,255,0.55);text-decoration:none}
 .foot-links a:hover{color:#fff}
 a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:2px}
+footer nav{background:transparent;border:none;position:static;z-index:auto}
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+
+  /* NAV */
+  .nav-links { display: none }
+  .nav-cta { font-size: 11px; padding: 7px 14px }
+
+  /* HERO */
+  .hero { min-height: 380px }
+  .hero-inner { min-height: 380px; padding: 0 1.5rem }
+  .hero-content { padding: 3.5rem 0 }
+  .hero h1 { font-size: clamp(28px, 7vw, 38px) }
+  .hero-sub { font-size: 13px }
+
+  /* STATS */
+  .stats-band-inner {
+    grid-template-columns: 1fr;
+    border-left: none;
+    padding: 0 1.5rem;
+  }
+  .sbi {
+    padding: 1.25rem 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .sbi:last-child { border-bottom: none }
+  .sbi-n { font-size: 32px }
+
+  /* PARTNERS */
+  .partners-band { padding: 2rem 0 }
+  .partners-logos { grid-template-columns: repeat(2, 1fr) }
+
+  /* SERVICES */
+  .services-section { padding: 3rem 0 }
+  .services-header { grid-template-columns: 1fr; gap: 1rem }
+  .svc-grid { grid-template-columns: 1fr }
+  .svc { padding: 1.5rem 1.25rem }
+  .svc-arrow { display: none }
+
+  /* HOW WE WORK */
+  .njt { padding: 3rem 0 }
+  .njt-inner { grid-template-columns: 1fr; gap: 2rem }
+  .njt-left h2 { font-size: 26px }
+  .njt-callout { margin-top: 1.25rem }
+
+  /* WORK */
+  .work { padding: 3rem 0 }
+  .work-header { flex-direction: column; align-items: flex-start; gap: 0.75rem }
+  .cases { grid-template-columns: 1fr }
+
+  /* CONTACT */
+  .contact { padding: 3rem 0 }
+  .contact-inner { grid-template-columns: 1fr; gap: 2.5rem }
+  .contact-left h2 { font-size: 24px }
+  .contact-sub { max-width: 100% }
+  .row2 { grid-template-columns: 1fr }
+
+  /* FOOTER */
+  .foot-inner { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem }
+  .foot-links { justify-content: center }
+
+  /* GENERAL */
+  .inner { padding: 0 1.5rem }
+  .njt .inner,
+  .services-section .inner,
+  .work .inner,
+  .contact .inner,
+  .partners-band .inner { padding: 0 1.5rem }
+}
+
+/* ── TABLET ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-content { max-width: 460px }
+  .hero h1 { font-size: clamp(28px, 3.5vw, 40px) }
+  .stats-band-inner { padding: 0 1.5rem }
+  .services-header { gap: 1.5rem }
+  .njt-inner { grid-template-columns: 260px 1fr; gap: 2.5rem }
+  .contact-inner { grid-template-columns: 1fr 340px; gap: 2.5rem }
+  .inner { padding: 0 1.5rem }
+}
+/* HAMBURGER */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile nav open state */
+.nav-links.is-open {
+  display: flex !important;
+  flex-direction: column;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 1.5rem;
+  gap: 1.25rem;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.nav-links.is-open a {
+  font-size: 15px;
+  color: var(--ink2);
+}
+.nav-cta--mobile {
+  display: none;
+  background: var(--mg);
+  color: #fff !important;
+  font-size: 12px !important;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 10px 18px;
+  border-radius: 3px;
+  text-decoration: none;
+  align-self: flex-start;
+}
+.nav-links.is-open .nav-cta--mobile { display: inline-block }
+
+@media (max-width: 768px) {
+  .nav-hamburger { display: flex }
+  .nav-cta--desktop { display: none }
+}
 </style>
 
 <div class="w">
 
 <nav>
   <div class="nav-inner">
-    <a href="#" aria-label="Tekleigh home">
-      <svg xmlns="http://www.w3.org/2000/svg" width="140" height="24" viewBox="0 0 534.63 90.51" role="img" aria-label="Tekleigh"><defs><style>.lc1{fill:#ffc700}.lc2{fill:#ff00af}.lc3{fill:#fba302}.lc4{fill:#ff8300}.lc5{fill:#c30072}.lc6{fill:#d70095}</style></defs><path d="M128.19,35.65h-19.58v-10.53h51.26v10.53h-19.49v54.12h-12.19V35.65Z"/><path d="M166.98,25.12h43.04v10.53h-30.85v15.7h24.75v10.53h-24.75v17.27h31.86v10.62h-44.06V25.12Z"/><path d="M238.38,59.85l-9.05,9.79v20.13h-12.28V25.12h12.28v28.17l25.95-28.17h15.24l-23.74,25.68,26.14,38.98h-15.15l-19.4-29.92Z"/><path d="M278.65,25.12h7.85v57.54h32.33v7.11h-40.18V25.12Z"/><path d="M325.94,25.12h40.45v7.11h-32.6v20.6h26.51v7.11h-26.51v22.72h33.62v7.11h-41.47V25.12Z"/><path d="M374.61,25.12h7.85V89.77h-7.85V25.12Z"/><path d="M389.21,57.45c0-22.07,15.15-33.07,31.22-33.07,14.78,0,26.32,8.77,27.8,21.15h-8.31c-1.48-8.22-9.61-14.04-19.58-14.04-13.3,0-23.09,9.14-23.09,25.95s9.79,26.14,23.09,26.14c10.62,0,20.04-6,20.04-15.33,0-2.96-1.94-4.89-5.08-4.89h-14.59v-6.83h15.98c4.71,0,11.45,3.69,11.45,11.08v22.17h-7.3v-11.27c-3.05,7.11-11.08,12.01-20.6,12.01-15.98,0-31.03-10.99-31.03-33.07Z"/><path d="M505.31,25.12V89.77h-7.85v-29.83h-34.27v29.83h-7.85V25.12h7.85v27.71h34.27V25.12h7.85Z"/><path class="lc4" d="M50.24,25.13h10.58c5.93,0,10.75,4.82,10.75,10.75v10.58h-21.33V25.13h0Z"/><path class="lc3" d="M50.24,50.27h21.33v21.33h-10.64c-5.9,0-10.69-4.79-10.69-10.69v-10.64h0Z"/><path class="lc1" d="M75.44,50.27h10.74c5.84,0,10.59,4.74,10.59,10.59h0c0,5.93-4.81,10.74-10.74,10.74h-10.59v-21.33h0Z"/><path class="lc5" d="M25.13,25.13h21.33v21.33h-10.59c-5.93,0-10.74-4.81-10.74-10.74v-10.59h0Z"/><path class="lc6" d="M25.13,0h10.45C41.59,0,46.47,4.87,46.47,10.88v10.45H25.13V0h0Z"/><path class="lc2" d="M10.7,0h10.63V21.33H10.63C4.76,21.33,0,16.57,0,10.7H0C0,4.8,4.8,0,10.7,0Z"/></svg>
+    <a href="/" aria-label="Tekleigh home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="140" height="24" viewBox="0 0 534.63 90.51" aria-hidden="true" focusable="false">
+        <defs><style>.lc1{fill:#ffc700}.lc2{fill:#ff00af}.lc3{fill:#fba302}.lc4{fill:#ff8300}.lc5{fill:#c30072}.lc6{fill:#d70095}</style></defs>
+        <path d="M128.19,35.65h-19.58v-10.53h51.26v10.53h-19.49v54.12h-12.19V35.65Z"/>
+        <path d="M166.98,25.12h43.04v10.53h-30.85v15.7h24.75v10.53h-24.75v17.27h31.86v10.62h-44.06V25.12Z"/>
+        <path d="M238.38,59.85l-9.05,9.79v20.13h-12.28V25.12h12.28v28.17l25.95-28.17h15.24l-23.74,25.68,26.14,38.98h-15.15l-19.4-29.92Z"/>
+        <path d="M278.65,25.12h7.85v57.54h32.33v7.11h-40.18V25.12Z"/>
+        <path d="M325.94,25.12h40.45v7.11h-32.6v20.6h26.51v7.11h-26.51v22.72h33.62v7.11h-41.47V25.12Z"/>
+        <path d="M374.61,25.12h7.85V89.77h-7.85V25.12Z"/>
+        <path d="M389.21,57.45c0-22.07,15.15-33.07,31.22-33.07,14.78,0,26.32,8.77,27.8,21.15h-8.31c-1.48-8.22-9.61-14.04-19.58-14.04-13.3,0-23.09,9.14-23.09,25.95s9.79,26.14,23.09,26.14c10.62,0,20.04-6,20.04-15.33,0-2.96-1.94-4.89-5.08-4.89h-14.59v-6.83h15.98c4.71,0,11.45,3.69,11.45,11.08v22.17h-7.3v-11.27c-3.05,7.11-11.08,12.01-20.6,12.01-15.98,0-31.03-10.99-31.03-33.07Z"/>
+        <path d="M505.31,25.12V89.77h-7.85v-29.83h-34.27v29.83h-7.85V25.12h7.85v27.71h34.27V25.12h7.85Z"/>
+        <path class="lc4" d="M50.24,25.13h10.58c5.93,0,10.75,4.82,10.75,10.75v10.58h-21.33V25.13h0Z"/>
+        <path class="lc3" d="M50.24,50.27h21.33v21.33h-10.64c-5.9,0-10.69-4.79-10.69-10.69v-10.64h0Z"/>
+        <path class="lc1" d="M75.44,50.27h10.74c5.84,0,10.59,4.74,10.59,10.59h0c0,5.93-4.81,10.74-10.74,10.74h-10.59v-21.33h0Z"/>
+        <path class="lc5" d="M25.13,25.13h21.33v21.33h-10.59c-5.93,0-10.74-4.81-10.74-10.74v-10.59h0Z"/>
+        <path class="lc6" d="M25.13,0h10.45C41.59,0,46.47,4.87,46.47,10.88v10.45H25.13V0h0Z"/>
+        <path class="lc2" d="M10.7,0h10.63V21.33H10.63C4.76,21.33,0,16.57,0,10.7H0C0,4.8,4.8,0,10.7,0Z"/>
+      </svg>
     </a>
     <div class="nav-links" role="navigation" aria-label="Main navigation">
-      <a href="#">Services</a>
+      <a href="#services">Services</a>
       <a href="#">AI Solutions</a>
       <a href="#">About</a>
       <a href="#">Insights</a>
-      <a href="#">Contact</a>
+      <a href="#contact">Contact</a>
     </div>
-    <a href="#contact" class="nav-cta">Contact Us</a>
+    <a href="#contact" class="nav-cta nav-cta--desktop">Contact Us</a>
+    <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -387,4 +555,26 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
   }
   frame();
 })();
+
+// Hamburger nav
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.querySelector('.nav-hamburger');
+  const navLinks  = document.querySelector('.nav-links');
+
+  if (!hamburger || !navLinks) return;
+
+  hamburger.addEventListener('click', function() {
+    const isOpen = navLinks.classList.toggle('is-open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+  });
+
+  navLinks.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      navLinks.classList.remove('is-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation');
+    });
+  });
+});
 </script>
