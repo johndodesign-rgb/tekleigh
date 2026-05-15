@@ -11,10 +11,10 @@
   --fs:'DM Sans',system-ui,sans-serif;
   --max:1000px;
 }
-.w{background:var(--white);color:var(--ink);font-family:var(--fs);font-size:15px;line-height:1.6;overflow:hidden}
+.w{background:var(--white);color:var(--ink);font-family:var(--fs);font-size:15px;line-height:1.6;overflow-x:clip}
 .inner{max-width:var(--max);margin:0 auto;padding:0 2rem}
 
-nav{background:#fff;border-bottom:1px solid var(--border);position:relative;z-index:10}
+nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
 .nav-inner{max-width:var(--max);margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
 .nav-links{display:flex;gap:1.75rem;align-items:center}
 .nav-links a{color:var(--ink2);font-size:13px;text-decoration:none;letter-spacing:0.02em}
@@ -71,7 +71,7 @@ nav{background:#fff;border-bottom:1px solid var(--border);position:relative;z-in
 .sl{font-size:11px;letter-spacing:0.14em;color:var(--mg);font-weight:500;text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;gap:8px}
 .sl::before{content:'';display:block;width:14px;height:1px;background:var(--mg)}
 
-.njt{padding:4.5rem 0;background:var(--off);position:relative;overflow:hidden}
+.njt{padding:4.5rem 0;background:var(--off);position:relative;overflow:clip}
 .njt-geo{position:absolute;top:-40px;right:-40px;width:220px;height:220px;border:1px solid rgba(192,24,106,0.08);border-radius:4px;transform:rotate(12deg)}
 .njt-geo2{position:absolute;top:0;right:30px;width:130px;height:130px;border:1px solid rgba(0,181,200,0.08);border-radius:4px;transform:rotate(12deg)}
 .njt-inner{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:start;position:relative;z-index:1}
@@ -103,7 +103,7 @@ nav{background:#fff;border-bottom:1px solid var(--border);position:relative;z-in
 .case-link{font-size:12px;color:var(--ink3);text-decoration:none;display:flex;align-items:center;gap:4px;margin-top:1rem;border-top:1px solid var(--border);padding-top:1rem}
 .case-link:hover{color:var(--mg)}
 
-.contact{background:var(--ink);padding:4.5rem 0;position:relative;overflow:hidden}
+.contact{background:var(--ink);padding:4.5rem 0;position:relative;overflow:clip}
 .cg1{position:absolute;top:-60px;right:-30px;width:260px;height:260px;border:1px solid rgba(192,24,106,0.12);border-radius:4px;transform:rotate(10deg)}
 .cg2{position:absolute;top:-10px;right:60px;width:150px;height:150px;border:1px solid rgba(0,181,200,0.08);border-radius:4px;transform:rotate(10deg)}
 .contact-inner{display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:start;position:relative;z-index:1}
