@@ -85,17 +85,27 @@ nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;
 .sl-light::before{content:'';display:block;width:14px;height:1px;background:var(--cyan)}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.08)}
 .svc {background: rgba(15, 30, 46, 0.55);padding:1.75rem 1.5rem;cursor:pointer;position:relative;transition:background 0.15s}
-  .contact-bg-image {
+.contact-bg-image {
   position: absolute;
   inset: 0;
   background-image: url('magnific_woman-business-leader-typ_74uQgWDJAL.png');
-  background-size: 70% auto;
-background-position: left top;
-  opacity: 0.07;
+  background-size: contain;
+  background-position: left center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
   mix-blend-mode: luminosity;
   pointer-events: none;
   z-index: 0;
 }
+
+/* gradient fade on the right edge */
+.contact-bg-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 40%, var(--ink) 75%);
+  pointer-events: none;
+}  
 .svc:hover {background: rgba(15, 30, 46, 0.55);}
 .svc-accent{width:26px;height:2px;margin-bottom:1rem;border-radius:1px}
 .svc-accent.mg{background:var(--mg)}
