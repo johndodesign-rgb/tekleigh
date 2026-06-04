@@ -1,4 +1,9 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tekleigh — Technology Advisory &amp; Implementation</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
@@ -49,7 +54,30 @@ nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;
 .partner-name{font-size:17px;font-weight:500;color:#fff;letter-spacing:0.01em;font-family:var(--fs)}
 .partner-badge{font-size:10px;letter-spacing:0.05em;color:#fff;text-transform:uppercase;text-align:center;opacity:0.9}
 
-.services-section{background:var(--navy);padding:4rem 0}
+/* ─── SERVICES SECTION ─── */
+.services-section{background:var(--navy);padding:4rem 0;position:relative;overflow:hidden}
+
+/*
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  BACKGROUND IMAGE — place your image file in the same folder   │
+  │  as this HTML file, then replace YOUR_IMAGE_FILENAME_HERE      │
+  │  with the actual filename, e.g. "server-room.jpg"              │
+  └─────────────────────────────────────────────────────────────────┘
+*/
+.svc-bg-image{
+  position:absolute;
+  inset:0;
+  background-image: url('group-business-executives-discussing-laptop-their-des.jpg');
+  background-size:cover;
+  background-position:center right;
+  opacity:0.08;               /* ghosting level — raise toward 0.15 for more presence */
+  mix-blend-mode:luminosity;  /* strips color so it reads as dark texture against navy */
+  pointer-events:none;
+  z-index:0;
+}
+
+.services-section .inner{position:relative;z-index:1}
+
 .services-header{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:2.5rem;align-items:end}
 .services-header h2{font-family:var(--ff);font-size:28px;font-weight:400;color:#fff;line-height:1.2}
 .services-intro{font-size:13px;color:#9aaab8;line-height:1.8}
@@ -129,156 +157,70 @@ footer{background:#080d13;border-top:1px solid rgba(255,255,255,0.05)}
 .foot-links a:hover{color:#fff}
 a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:2px}
 footer nav{background:transparent;border:none;position:static;z-index:auto}
-/* ── MOBILE ── */
+
 @media (max-width: 768px) {
-
-  /* NAV */
-  .nav-links { display: none }
-  .nav-cta { font-size: 11px; padding: 7px 14px }
-
-  /* HERO */
-  .hero { min-height: 380px }
-  .hero-inner { min-height: 380px; padding: 0 1.5rem }
-  .hero-content { padding: 3.5rem 0 }
-  .hero h1 { font-size: clamp(28px, 7vw, 38px) }
-  .hero-sub { font-size: 13px }
-
-  /* STATS */
-  .stats-band-inner {
-    grid-template-columns: 1fr;
-    border-left: none;
-    padding: 0 1.5rem;
-  }
-  .sbi {
-    padding: 1.25rem 0;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-  .sbi:last-child { border-bottom: none }
-  .sbi-n { font-size: 32px }
-
-  /* PARTNERS */
-  .partners-band { padding: 2rem 0 }
-  .partners-logos { grid-template-columns: repeat(2, 1fr) }
-
-  /* SERVICES */
-  .services-section { padding: 3rem 0 }
-  .services-header { grid-template-columns: 1fr; gap: 1rem }
-  .svc-grid { grid-template-columns: 1fr }
-  .svc { padding: 1.5rem 1.25rem }
-  .svc-arrow { display: none }
-
-  /* HOW WE WORK */
-  .njt { padding: 3rem 0 }
-  .njt-inner { grid-template-columns: 1fr; gap: 2rem }
-  .njt-left h2 { font-size: 26px }
-  .njt-callout { margin-top: 1.25rem }
-
-  /* WORK */
-  .work { padding: 3rem 0 }
-  .work-header { flex-direction: column; align-items: flex-start; gap: 0.75rem }
-  .cases { grid-template-columns: 1fr }
-
-  /* CONTACT */
-  .contact { padding: 3rem 0 }
-  .contact-inner { grid-template-columns: 1fr; gap: 2.5rem }
-  .contact-left h2 { font-size: 24px }
-  .contact-sub { max-width: 100% }
-  .row2 { grid-template-columns: 1fr }
-
-  /* FOOTER */
-  .foot-inner { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem }
-  .foot-links { justify-content: center }
-
-  /* GENERAL */
-  .inner { padding: 0 1.5rem }
-  .njt .inner,
-  .services-section .inner,
-  .work .inner,
-  .contact .inner,
-  .partners-band .inner { padding: 0 1.5rem }
+  .nav-links{display:none}
+  .nav-cta{font-size:11px;padding:7px 14px}
+  .hero{min-height:380px}
+  .hero-inner{min-height:380px;padding:0 1.5rem}
+  .hero-content{padding:3.5rem 0}
+  .hero h1{font-size:clamp(28px,7vw,38px)}
+  .hero-sub{font-size:13px}
+  .stats-band-inner{grid-template-columns:1fr;border-left:none;padding:0 1.5rem}
+  .sbi{padding:1.25rem 0;border-right:none;border-bottom:1px solid var(--border)}
+  .sbi:last-child{border-bottom:none}
+  .sbi-n{font-size:32px}
+  .partners-band{padding:2rem 0}
+  .partners-logos{grid-template-columns:repeat(2,1fr)}
+  .services-section{padding:3rem 0}
+  .services-header{grid-template-columns:1fr;gap:1rem}
+  .svc-grid{grid-template-columns:1fr}
+  .svc{padding:1.5rem 1.25rem}
+  .svc-arrow{display:none}
+  .njt{padding:3rem 0}
+  .njt-inner{grid-template-columns:1fr;gap:2rem}
+  .njt-left h2{font-size:26px}
+  .njt-callout{margin-top:1.25rem}
+  .work{padding:3rem 0}
+  .work-header{flex-direction:column;align-items:flex-start;gap:0.75rem}
+  .cases{grid-template-columns:1fr}
+  .contact{padding:3rem 0}
+  .contact-inner{grid-template-columns:1fr;gap:2.5rem}
+  .contact-left h2{font-size:24px}
+  .contact-sub{max-width:100%}
+  .row2{grid-template-columns:1fr}
+  .foot-inner{flex-direction:column;gap:1rem;text-align:center;padding:1.5rem}
+  .foot-links{justify-content:center}
+  .inner{padding:0 1.5rem}
+  .njt .inner,.services-section .inner,.work .inner,.contact .inner,.partners-band .inner{padding:0 1.5rem}
 }
 
-/* ── TABLET ── */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .hero-content { max-width: 460px }
-  .hero h1 { font-size: clamp(28px, 3.5vw, 40px) }
-  .stats-band-inner { padding: 0 1.5rem }
-  .services-header { gap: 1.5rem }
-  .njt-inner { grid-template-columns: 260px 1fr; gap: 2.5rem }
-  .contact-inner { grid-template-columns: 1fr 340px; gap: 2.5rem }
-  .inner { padding: 0 1.5rem }
-}
-/* HAMBURGER */
-.nav-hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  width: 32px;
-  height: 32px;
-}
-.nav-hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--ink);
-  border-radius: 2px;
-  transition: transform 0.2s, opacity 0.2s;
-}
-.nav-hamburger[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.nav-hamburger[aria-expanded="true"] span:nth-child(2) {
-  opacity: 0;
-}
-.nav-hamburger[aria-expanded="true"] span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  .hero-content{max-width:460px}
+  .hero h1{font-size:clamp(28px,3.5vw,40px)}
+  .stats-band-inner{padding:0 1.5rem}
+  .services-header{gap:1.5rem}
+  .njt-inner{grid-template-columns:260px 1fr;gap:2.5rem}
+  .contact-inner{grid-template-columns:1fr 340px;gap:2.5rem}
+  .inner{padding:0 1.5rem}
 }
 
-/* Mobile nav open state */
-.nav-links.is-open {
-  display: flex !important;
-  flex-direction: column;
-  position: absolute;
-  top: 64px;
-  left: 0;
-  right: 0;
-  background: #fff;
-  border-bottom: 1px solid var(--border);
-  padding: 1.5rem 1.5rem;
-  gap: 1.25rem;
-  z-index: 100;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-}
-.nav-links.is-open a {
-  font-size: 15px;
-  color: var(--ink2);
-}
-.nav-cta--mobile {
-  display: none;
-  background: var(--mg);
-  color: #fff !important;
-  font-size: 12px !important;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  padding: 10px 18px;
-  border-radius: 3px;
-  text-decoration: none;
-  align-self: flex-start;
-}
-.nav-links.is-open .nav-cta--mobile { display: inline-block }
-
-@media (max-width: 768px) {
-  .nav-hamburger { display: flex }
-  .nav-cta--desktop { display: none }
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;width:32px;height:32px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform 0.2s,opacity 0.2s}
+.nav-hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-links.is-open{display:flex!important;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:1.5rem 1.5rem;gap:1.25rem;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+.nav-links.is-open a{font-size:15px;color:var(--ink2)}
+.nav-cta--mobile{display:none;background:var(--mg);color:#fff!important;font-size:12px!important;font-weight:500;letter-spacing:0.06em;padding:10px 18px;border-radius:3px;text-decoration:none;align-self:flex-start}
+.nav-links.is-open .nav-cta--mobile{display:inline-block}
+@media (max-width: 768px){
+  .nav-hamburger{display:flex}
+  .nav-cta--desktop{display:none}
 }
 </style>
-
+</head>
+<body>
 <div class="w">
 
 <nav>
@@ -382,6 +324,15 @@ footer nav{background:transparent;border:none;position:static;z-index:auto}
 
 <section id="services" aria-label="Services">
   <div class="services-section">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BACKGROUND IMAGE DIV
+         Put your image file in the same folder as this HTML file,
+         then update the CSS above — search for YOUR_IMAGE_FILENAME_HERE
+         and replace it with your filename, e.g. server-room.jpg
+         ═══════════════════════════════════════════════════════════════ -->
+    <div class="svc-bg-image" aria-hidden="true"></div>
+
     <div class="inner">
       <div class="services-header">
         <div>
@@ -556,19 +507,15 @@ footer nav{background:transparent;border:none;position:static;z-index:auto}
   frame();
 })();
 
-// Hamburger nav
 document.addEventListener('DOMContentLoaded', function() {
   const hamburger = document.querySelector('.nav-hamburger');
   const navLinks  = document.querySelector('.nav-links');
-
   if (!hamburger || !navLinks) return;
-
   hamburger.addEventListener('click', function() {
     const isOpen = navLinks.classList.toggle('is-open');
     hamburger.setAttribute('aria-expanded', String(isOpen));
     hamburger.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
   });
-
   navLinks.querySelectorAll('a').forEach(function(link) {
     link.addEventListener('click', function() {
       navLinks.classList.remove('is-open');
@@ -578,3 +525,5 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+</body>
+</html>
